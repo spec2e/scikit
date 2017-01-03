@@ -1,7 +1,7 @@
 import numpy
 import gzip
 
-def read_data_sets(validation_size=5000):
+def read_data_sets():
 
   TRAIN_IMAGES = 'train-images-idx3-ubyte.gz'
   TRAIN_LABELS = 'train-labels-idx1-ubyte.gz'
@@ -20,18 +20,7 @@ def read_data_sets(validation_size=5000):
   with open('data/' + TEST_LABELS, 'rb') as f:
     test_labels = extract_labels(f)
 
-  if not 0 <= validation_size <= len(train_images):
-    raise ValueError(
-        'Validation size should be between 0 and {}. Received: {}.'
-        .format(len(train_images), validation_size))
-
-  validation_images = test_images[validation_size:]
-  validation_labels = test_labels[validation_size:]
-  train_images2 = train_images[validation_size:]
-  train_labels2 = train_labels[validation_size:]
-  print(len(validation_labels))
-
-  return [train_images2, train_labels2, validation_images, validation_labels]
+  return [train_images, train_labels, test_images, test_labels]
 
 
 def _read32(bytestream):
@@ -52,7 +41,7 @@ def extract_images(f):
     ValueError: If the bytestream does not start with 2051.
 
   """
-  print('Extracting', f.name)
+  #print('Extracting', f.name)
   with gzip.GzipFile(fileobj=f) as bytestream:
     magic = _read32(bytestream)
     if magic != 2051:
@@ -63,7 +52,7 @@ def extract_images(f):
     cols = _read32(bytestream)
     buf = bytestream.read(rows * cols * num_images)
     data = numpy.frombuffer(buf, dtype=numpy.uint8)
-    data = data.reshape(num_images, rows, cols, 1)
+    data = data.reshape(num_images, rows, cols)
     return data
 
 
@@ -81,7 +70,7 @@ def extract_labels(f, num_classes=10):
   Raises:
     ValueError: If the bystream doesn't start with 2049.
   """
-  print('Extracting', f.name)
+  #print('Extracting', f.name)
   with gzip.GzipFile(fileobj=f) as bytestream:
     magic = _read32(bytestream)
     if magic != 2049:
