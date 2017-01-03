@@ -25,12 +25,13 @@ def read_data_sets(validation_size=5000):
         'Validation size should be between 0 and {}. Received: {}.'
         .format(len(train_images), validation_size))
 
-  validation_images = test_images[validation_size]
-  validation_labels = test_labels[validation_size]
-  train_images = train_images[validation_size:]
-  train_labels = train_labels[validation_size:]
+  validation_images = test_images[validation_size:]
+  validation_labels = test_labels[validation_size:]
+  train_images2 = train_images[validation_size:]
+  train_labels2 = train_labels[validation_size:]
+  print(len(validation_labels))
 
-  return [train_images, train_labels, validation_images, validation_labels]
+  return [train_images2, train_labels2, validation_images, validation_labels]
 
 
 def _read32(bytestream):
