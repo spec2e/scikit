@@ -9,7 +9,7 @@ from mnist.mnist_reader import read_data_sets
 
 def flatten_images(images):
     img_ret = list()
-    for index, (image) in enumerate(images[:-1]):
+    for index, (image) in enumerate(images[:]):
         img_ret.append(image.reshape(-1))
 
     return numpy.array(img_ret)
@@ -24,31 +24,29 @@ validation_images = mnist_data[2]
 validation_labels = mnist_data[3]
 
 data = flatten_images(train_images)
-print(data.shape)
 
 validation_data = flatten_images(validation_images)
-print(validation_data.shape)
 
 # Create a classifier: a support vector classifier
 classifier = svm.SVC(gamma=0.001)
-classifier.fit(data[:10], train_labels[:10])
+first = 4000
+range = 3000
+classifier.fit(data[first: first + range], train_labels[first:first + range])
 
-expected = validation_labels[0]
-predicted = classifier.predict(validation_data)
+idx = 41
+image = validation_images[idx]
+expected = validation_labels[idx]
+predicted = classifier.predict([validation_data[idx]])
 
-print(expected)
-print(predicted)
+print('expected %s' % (expected))
+print('predicted %s' % predicted)
 
-
-def show_first_four_images():
-    for index, (image) in enumerate(train_images[:4]):
-        plt.subplot(2, 4, index + 1)
-        plt.axis('off')
-        plt.imshow(image, cmap=plt.cm.gray_r, interpolation='nearest')
-        plt.title('Training: %i' % train_labels[index])
+def show_image(image, label):
+    plt.subplot(2, 4, label)
+    plt.axis('off')
+    plt.imshow(image, cmap=plt.cm.gray_r, interpolation='nearest')
+    plt.title('Expected: %s' % label)
     plt.show()
 
-
-
-#show_first_four_images()
+show_image(image, expected)
 
