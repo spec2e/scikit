@@ -6,6 +6,8 @@ from sklearn import metrics
 from sklearn.externals import joblib
 from mnist.mnist_reader import read_data_sets
 
+MNIST_MODEL_NAME = 'mnist.pkl'
+
 def flatten_images(images):
     img_ret = list()
     for index, (image) in enumerate(images[:]):
@@ -14,29 +16,28 @@ def flatten_images(images):
     return numpy.array(img_ret)
 
 
-mnist_data = read_data_sets()
+def train_mnist(images_to_train, labels_to_train):
+    data = flatten_images(images_to_train)
+    classifier = RandomForestClassifier(n_estimators=10)
+    classifier.fit(data, labels_to_train)
+    joblib.dump(classifier, MNIST_MODEL_NAME)
 
-train_images = mnist_data[0]
-train_labels = mnist_data[1]
+
+mnist_data = read_data_sets()
 
 validation_images = mnist_data[2]
 validation_labels = mnist_data[3]
 
-data = flatten_images(train_images)
-
 validation_data = flatten_images(validation_images)
 
-classifier = RandomForestClassifier(n_estimators=10)
-classifier.fit(data, train_labels)
+classifier = joblib.load(MNIST_MODEL_NAME)
 
-joblib.dump(classifier, 'mnist.pkl')
+if classifier is None:
+    train_mnist(mnist_data[0], mnist_data[1])
 
 idx = 568
 expected = validation_labels[idx]
 predicted = classifier.predict([validation_data[idx]])
-
-#print('expected %s' % expected)
-#print('predicted %s' % predicted)
 
 print("Classification report for classifier %s:\n%s\n"
       % (classifier, metrics.classification_report([expected], predicted)))
