@@ -37,7 +37,7 @@ if os.path.isfile(MNIST_MODEL_NAME):
 else:
     classifier = train_mnist(mnist_data[0], mnist_data[1])
 
-idx = 654
+idx = 4289
 expected = validation_labels[idx]
 predicted = classifier.predict([validation_data[idx]])
 
