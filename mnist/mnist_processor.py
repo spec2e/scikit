@@ -37,7 +37,7 @@ if os.path.isfile(MNIST_MODEL_NAME):
 else:
     classifier = train_mnist(mnist_data[0], mnist_data[1])
 
-idx = 568
+idx = 654
 expected = validation_labels[idx]
 predicted = classifier.predict([validation_data[idx]])
 
@@ -46,11 +46,14 @@ print("Classification report for classifier %s:\n%s\n"
 print("Confusion matrix:\n%s" % metrics.confusion_matrix([expected], predicted))
 
 
-def show_image(image, label, predicted):
-    plt.subplot(2, 4, label)
+def show_image(image, label, predicted_label):
+    print(image)
+    print(label)
+    print(predicted_label[0])
+    plt.plot(label)
     plt.axis('off')
     plt.imshow(image, cmap=plt.cm.gray_r, interpolation='nearest')
-    plt.title('Expected: ' + str(label) + ', predicted: ' + str(predicted))
+    plt.title('Expected: ' + str(label) + ', predicted: ' + str(predicted_label[0]))
     plt.show()
 
 
