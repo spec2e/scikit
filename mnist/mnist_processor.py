@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 import numpy
+import os
 
 from sklearn.ensemble import RandomForestClassifier
 from sklearn import metrics
@@ -18,9 +19,10 @@ def flatten_images(images):
 
 def train_mnist(images_to_train, labels_to_train):
     data = flatten_images(images_to_train)
-    classifier = RandomForestClassifier(n_estimators=10)
-    classifier.fit(data, labels_to_train)
-    joblib.dump(classifier, MNIST_MODEL_NAME)
+    trained_classifier = RandomForestClassifier(n_estimators=10)
+    trained_classifier.fit(data, labels_to_train)
+    joblib.dump(trained_classifier, MNIST_MODEL_NAME)
+    return trained_classifier
 
 
 mnist_data = read_data_sets()
@@ -30,10 +32,10 @@ validation_labels = mnist_data[3]
 
 validation_data = flatten_images(validation_images)
 
-classifier = joblib.load(MNIST_MODEL_NAME)
-
-if classifier is None:
-    train_mnist(mnist_data[0], mnist_data[1])
+if os.path.isfile(MNIST_MODEL_NAME):
+    classifier = joblib.load(MNIST_MODEL_NAME)
+else:
+    classifier = train_mnist(mnist_data[0], mnist_data[1])
 
 idx = 568
 expected = validation_labels[idx]
