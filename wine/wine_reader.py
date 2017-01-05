@@ -1,8 +1,10 @@
 import pandas as pd
+from sklearn.utils import shuffle
 
 
 def read_wines():
     data = pd.read_csv('data/wine_normalized.csv', sep=',', header=None)
+    data = shuffle(data)
     wine_data = get_data(data)
     labels = get_labels(data)
     return [wine_data, labels]

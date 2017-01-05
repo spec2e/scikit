@@ -9,6 +9,7 @@ from mnist.mnist_reader import read_data_sets
 
 MNIST_MODEL_NAME = 'mnist.pkl'
 
+
 def flatten_images(images):
     img_ret = list()
     for index, (image) in enumerate(images[:]):
