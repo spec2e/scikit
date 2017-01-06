@@ -1,5 +1,7 @@
 from sklearn import metrics
 from sklearn.ensemble.forest import RandomForestClassifier
+from sklearn.naive_bayes import GaussianNB
+from sklearn.neural_network.multilayer_perceptron import MLPClassifier
 
 from wine.wine_reader import read_wines
 
@@ -21,9 +23,9 @@ def main():
 
 
 def train(data, labels):
-    trained_classifier = RandomForestClassifier(n_estimators=10)
+    #trained_classifier = RandomForestClassifier(n_estimators=10)
     #trained_classifier = GaussianNB()
-    #trained_classifier = MLPClassifier()
+    trained_classifier = MLPClassifier()
     # trained_classifier = KNeighborsClassifier()
     trained_classifier.fit(data, labels)
     return trained_classifier
