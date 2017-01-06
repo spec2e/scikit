@@ -1,6 +1,6 @@
 from sklearn import metrics
-from sklearn.ensemble.forest import RandomForestClassifier
-from sklearn.naive_bayes import GaussianNB
+from sklearn.linear_model.base import LinearRegression
+from sklearn.linear_model.stochastic_gradient import SGDClassifier
 from sklearn.neural_network.multilayer_perceptron import MLPClassifier
 
 from wine.wine_reader import read_wines
@@ -25,7 +25,9 @@ def main():
 def train(data, labels):
     #trained_classifier = RandomForestClassifier(n_estimators=10)
     #trained_classifier = GaussianNB()
-    trained_classifier = MLPClassifier()
+    #trained_classifier = MLPClassifier()
+    #trained_classifier = LinearRegression()
+    trained_classifier = SGDClassifier()
     # trained_classifier = KNeighborsClassifier()
     trained_classifier.fit(data, labels)
     return trained_classifier
@@ -36,6 +38,7 @@ def predict(classifier, predict_data):
 
 
 def print_results(classifier, expected, predicted):
+    print(predicted)
     print("Classification report for classifier %s:\n%s\n"
           % (classifier, metrics.classification_report(expected, predicted)))
     print("Confusion matrix:\n%s" % metrics.confusion_matrix(expected, predicted))
