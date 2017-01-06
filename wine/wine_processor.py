@@ -1,4 +1,8 @@
+import matplotlib.pyplot as plt
+import numpy
+
 from sklearn import metrics
+from sklearn.ensemble.forest import RandomForestClassifier
 from sklearn.linear_model.base import LinearRegression
 from sklearn.linear_model.stochastic_gradient import SGDClassifier
 from sklearn.neural_network.multilayer_perceptron import MLPClassifier
@@ -23,11 +27,11 @@ def main():
 
 
 def train(data, labels):
-    #trained_classifier = RandomForestClassifier(n_estimators=10)
+    trained_classifier = RandomForestClassifier(n_estimators=10)
     #trained_classifier = GaussianNB()
     #trained_classifier = MLPClassifier()
     #trained_classifier = LinearRegression()
-    trained_classifier = SGDClassifier()
+    #trained_classifier = SGDClassifier()
     # trained_classifier = KNeighborsClassifier()
     trained_classifier.fit(data, labels)
     return trained_classifier
@@ -42,5 +46,13 @@ def print_results(classifier, expected, predicted):
     print("Classification report for classifier %s:\n%s\n"
           % (classifier, metrics.classification_report(expected, predicted)))
     print("Confusion matrix:\n%s" % metrics.confusion_matrix(expected, predicted))
+
+    y = numpy.array(expected)
+    fig, ax = plt.subplots()
+    ax.scatter(expected, predicted)
+    ax.plot([y.min(), y.max()], [y.min(), y.max()], 'k--', lw=4)
+    ax.set_xlabel('Measured')
+    ax.set_ylabel('Predicted')
+    #plt.show()
 
 main()
