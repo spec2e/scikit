@@ -1,13 +1,17 @@
-import matplotlib.pyplot as plt
-import numpy
 import os
 
-from sklearn.ensemble import RandomForestClassifier
+import matplotlib.pyplot as plt
+import numpy
 from sklearn import metrics
+from sklearn.ensemble import RandomForestClassifier
 from sklearn.externals import joblib
+
 from mnist.mnist_reader import read_data_sets
 
 MNIST_MODEL_NAME = 'mnist.pkl'
+
+# You can change this index to anything between 0 and 9999
+PICTURE_INDEX_TO_PREDICT = 9999
 
 
 def flatten_images(images):
@@ -26,6 +30,28 @@ def train_mnist(images_to_train, labels_to_train):
     return trained_classifier
 
 
+def show_image(image, label, predicted_label):
+    plt.plot(label)
+    plt.imshow(image, cmap=plt.cm.gray_r, interpolation='nearest')
+    plt.title('Expected: ' + str(label) + ', predicted: ' + str(predicted_label[0]))
+    plt.show()
+
+
+def predict_single_number(image_data, expected_label, image):
+    predicted_single_number = classifier.predict(image_data)
+    print("Classification report for classifier %s:\n%s\n" %
+          (classifier, metrics.classification_report([expected_label], predicted_single_number)))
+    print("Confusion matrix:\n%s" % metrics.confusion_matrix([expected_label], predicted_single_number))
+    show_image(image, expected_label, predicted_single_number)
+
+
+def predict_full_validation_set(validation_set, validation_labels):
+    predicted = classifier.predict(validation_set)
+    print("Classification report for classifier %s:\n%s\n" %
+          (classifier, metrics.classification_report(validation_labels, predicted)))
+    print("Confusion matrix:\n%s" % metrics.confusion_matrix(validation_labels, predicted))
+
+
 mnist_data = read_data_sets()
 
 validation_images = mnist_data[2]
@@ -38,24 +64,8 @@ if os.path.isfile(MNIST_MODEL_NAME):
 else:
     classifier = train_mnist(mnist_data[0], mnist_data[1])
 
-idx = 4289
-expected = validation_labels[idx]
-predicted = classifier.predict([validation_data[idx]])
+#predict_single_number(validation_data[PICTURE_INDEX_TO_PREDICT], validation_labels[PICTURE_INDEX_TO_PREDICT], validation_images[PICTURE_INDEX_TO_PREDICT])
 
-print("Classification report for classifier %s:\n%s\n"
-      % (classifier, metrics.classification_report([expected], predicted)))
-print("Confusion matrix:\n%s" % metrics.confusion_matrix([expected], predicted))
+predict_full_validation_set(validation_data, validation_labels)
 
 
-def show_image(image, label, predicted_label):
-    print(image)
-    print(label)
-    print(predicted_label[0])
-    plt.plot(label)
-    plt.axis('off')
-    plt.imshow(image, cmap=plt.cm.gray_r, interpolation='nearest')
-    plt.title('Expected: ' + str(label) + ', predicted: ' + str(predicted_label[0]))
-    plt.show()
-
-
-show_image(validation_images[idx], expected, predicted)
