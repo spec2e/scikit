@@ -52,5 +52,8 @@ The dataset is downloaded from
 
 http://archive.ics.uci.edu/ml/datasets/Wine
 
-The data are not in the same scale, so I normalized the data
+The data are not in the same scale, so I normalize the data using the Normalizer in sklearn.preprocessing.
+You can experiment with different algorithms in the code - should quite easy.
+
+
 
