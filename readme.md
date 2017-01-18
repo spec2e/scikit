@@ -1,3 +1,5 @@
+# Machine learning with Scikit-learn
+
 This repository is a way to experiment with Machine Learning using the Scikit python API.
 It can be found here:
 
@@ -18,3 +20,12 @@ When started, first thing is to upgrade the Scikit bundle in python. Open the te
 pip install -U scikit-learn
 
 Now you should be ready :-)
+
+## The samples
+
+### MNIST 
+This sample uses the standard dataset from:
+
+http://yann.lecun.com/exdb/mnist/
+
+The pictures are 28x28 pixels, and there are 
