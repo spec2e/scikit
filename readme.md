@@ -56,4 +56,22 @@ The data are not in the same scale, so I normalize the data using the Normalizer
 You can experiment with different algorithms in the code - should be quite easy.
 
 
+# Blogs worth reading
+
+I have come across many places where you can read about machine learning. One of the best places is definetely 
+
+http://machinelearningmastery.com
+
+The blogs and the books on the page holds high quality and are easy read and understand.
+The guy who writes this is Jason Brownlee and he is very helpful when it comes to questions.
+
+Another place is medium. There is a blog for machine learning in here and the guy who writes this is Adam Geitgey.
+There are 6 blogs here, each adressing interesting problems like face recognition and speech analysis.
+
+https://medium.com/@ageitgey/machine-learning-is-fun-80ea3ec3c471#.oury42511
+
+
+
+
+
 
