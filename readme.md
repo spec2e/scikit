@@ -34,7 +34,7 @@ A confusion matrix is printed when done - it should show 0.95, which tells us th
 
 You can also make a prediction for one picture only and have it shown on the screen. Uncomment the line 
 
-#predict_single_number(validation_data[PICTURE_INDEX_TO_PREDICT], validation_labels[PICTURE_INDEX_TO_PREDICT], validation_images[PICTURE_INDEX_TO_PREDICT])
+predict_single_number(validation_data[PICTURE_INDEX_TO_PREDICT], validation_labels[PICTURE_INDEX_TO_PREDICT], validation_images[PICTURE_INDEX_TO_PREDICT])
 
 and comment out the line
 
