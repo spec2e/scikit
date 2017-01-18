@@ -45,4 +45,12 @@ and comment out the line
 
 predict_full_validation_set(validation_data, validation_labels)
 
+## wine
+
+This is also a classification problem. It tries to classify the quality of wines based on 13 different kind of features.
+The dataset is downloaded from
+
+http://archive.ics.uci.edu/ml/datasets/Wine
+
+The data are not in the same scale, so I normalized the data
 
