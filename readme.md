@@ -23,13 +23,18 @@ Now you should be ready :-)
 
 ## The samples
 
-### MNIST 
-This sample uses the standard dataset from:
+### mnist
+
+The MNIST problem is a very used classification problem in machine learning. It tries to recognize handwritten numbers. 
+The sample use the standard dataset from:
 
 http://yann.lecun.com/exdb/mnist/
 
 The pictures are 28x28 pixels, and there are 60.000 examples and 10.000 test samples.
 The samples trains on the 60.000 examples and validates against the 10.000 tests. 
+Training is done using the RandomForestClassifier algorithm.
+You can experiment with other classification algorithms just by substituting the line with RandomForestClassifier.
+
 A confusion matrix is printed when done - it should show 0.95, which tells us the it predicts correct in 95% of the cases.
 
 You can also make a prediction for one picture only and have it shown on the screen. Uncomment the line 
