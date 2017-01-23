@@ -10,10 +10,13 @@ Download and install from here:
 
 https://www.continuum.io/downloads
 
-As IDE i recommend using Jebrains PyCharm. The community edition is a nice fit. Download from here:
+You should really use Jupyter as development environment while experimenting.
+The turn-around-time is awesome!
+
+If you want a full-blown IDE, I can recommend using Jebrains PyCharm. 
+The community edition is a nice fit. Download from here:
 
 https://www.jetbrains.com/pycharm/download/
-
 
 When started, first thing is to upgrade the Scikit bundle in python. Open the terminal in PyCharm and enter 
 
