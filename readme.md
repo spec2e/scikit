@@ -74,6 +74,9 @@ There are 6 blogs here, each adressing interesting problems like face recognitio
 https://medium.com/@ageitgey/machine-learning-is-fun-80ea3ec3c471#.oury42511
 
 
+Here is a very thorough overview of tutorials and videos regarding machine learning and neural networks:
+
+http://jalammar.github.io/visual-interactive-guide-basics-neural-networks/
 
 
 
