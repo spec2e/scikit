@@ -76,7 +76,7 @@ https://medium.com/@ageitgey/machine-learning-is-fun-80ea3ec3c471#.oury42511
 
 Here is a very thorough overview of tutorials and videos regarding machine learning and neural networks:
 
-http://jalammar.github.io/visual-interactive-guide-basics-neural-networks/
+http://yerevann.com/a-guide-to-deep-learning/?utm_campaign=Revue%20newsletter&utm_medium=Newsletter&utm_source=revue
 
 
 
