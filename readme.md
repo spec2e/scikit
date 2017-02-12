@@ -84,4 +84,4 @@ Andrew Ng's courses on Machine Learning
 https://www.youtube.com/watch?v=HN7VK4aDFiA&feature=relmfu
 
 
-
+https://www.coursera.org/learn/machine-learning
