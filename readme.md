@@ -94,3 +94,5 @@ https://www.youtube.com/watch?v=HN7VK4aDFiA&feature=relmfu
 
 
 https://www.coursera.org/learn/machine-learning
+
+http://colah.github.io/
