@@ -49,3 +49,6 @@ max_words_question = 300
 model = gensim.models.Word2Vec(X, size=100, min_count=10, iter=1)
 res = model.most_similar(positive=['car', 'seat'], topn=1)
 print(res)
+
+res2 = model['infant']
+print(res2)
