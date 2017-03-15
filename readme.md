@@ -74,7 +74,25 @@ There are 6 blogs here, each adressing interesting problems like face recognitio
 https://medium.com/@ageitgey/machine-learning-is-fun-80ea3ec3c471#.oury42511
 
 
+Here is a very thorough overview of tutorials and videos regarding machine learning and neural networks:
+
+http://yerevann.com/a-guide-to-deep-learning/?utm_campaign=Revue%20newsletter&utm_medium=Newsletter&utm_source=revue
 
 
+Hugo Larochelles videos on Deep Learning.
+
+https://www.youtube.com/playlist?list=PL6Xpj9I5qXYEcOhn7TqghAJ6NAPrNmUBH
+
+Materials and other stuff:
+
+http://info.usherbrooke.ca/hlarochelle/neural_networks/content.html
 
 
+Andrew Ng's courses on Machine Learning
+
+https://www.youtube.com/watch?v=HN7VK4aDFiA&feature=relmfu
+
+
+https://www.coursera.org/learn/machine-learning
+
+http://colah.github.io/
